@@ -121,7 +121,7 @@ public:
         return width;
     }
 
-    void addcoordinatesfurn(const Furniture& furniture, int x, int y, bool& done) {
+ /*   void addcoordinatesfurn(const Furniture& furniture, int x, int y, bool& done) {
         if (canPlaceFurniture(furniture, x, y, 1)) {
             for (int i = 0; i < length; i++) {
                 for (int j = 0; j < width; j++) {
@@ -133,7 +133,7 @@ public:
         } else
             done = 1;
     }
-
+*/
   
 
     void removeFurniture(const Furniture& furniture){
@@ -286,6 +286,7 @@ public:
             if(plc==1)
                 break;
         }
+        
     }    
 
     void generate()
@@ -296,7 +297,7 @@ public:
                 if(workspaceLayout[i][j]=='*')
                     cout<<'.'<<' ';
                 else
-                    cout<<workspaceLayout[i][j];
+                    cout<<workspaceLayout[i][j]<<' ';
             }
             cout<<endl;
         }
@@ -314,6 +315,7 @@ public:
     }
 
     void alternateplacefurniture(const Furniture& furniture,int x,int y,bool st){
+        cout<<x<<y<<" ";
         int i,j;
          if (st == 1) {
              for(i=0;i<length;i++){
@@ -554,6 +556,7 @@ int main() {
                                 cout << "Space Utilization: " << (spaceUtilization * 100) << "%" << endl;*/
                                 
                                 workspace[id].alternatepos(furniture[id]);
+                                
                                 workspace[id].generate();
                                 cout << "Are you fine with the furniture placement?? (0 - No 1 - Yes)";
                                 cin >> ch;
