@@ -269,7 +269,26 @@ public:
                 }
             }
         }
-        bool plc=0;
+        for(i=0;i<length;i++){
+            for(j=0;j<width;j++){
+                if(workspaceLayout[i][j]==furniture.getName()[0]){
+                    workspaceLayout[i][j]='.';
+                }
+            }
+        }
+        for(i=0;i<length;i++){
+            for(j=0;j<width;j++){
+                if(workspaceLayout[i][j]=='.' && canPlaceFurniture(furniture,i,j,1)){
+                    placeFurniture(furniture, i, j, 1);
+                    return;
+                }
+                else if(workspaceLayout[i][j]=='.' && canPlaceFurniture(furniture,i,j,0)){
+                    placeFurniture(furniture, i, j, 1);
+                    return;
+                }
+            }
+        }
+      /*  bool plc=0;
         for(i=0;i<length;i++){
             for(j=0;j<width;j++){
                 if((workspaceLayout[i][j]=='.' || workspaceLayout[i][j]==furniture.getName()[0])  && canPlaceFurniture(furniture,i,j,1)) { 
@@ -286,7 +305,7 @@ public:
             if(plc==1)
                 break;
         }
-        
+        */
     }    
 
     void generate()
@@ -315,7 +334,7 @@ public:
     }
 
     void alternateplacefurniture(const Furniture& furniture,int x,int y,bool st){
-        cout<<x<<y<<" ";
+        //cout<<x<<y<<" ";
         int i,j;
          if (st == 1) {
              for(i=0;i<length;i++){
@@ -443,12 +462,15 @@ public:
         return totalFurnitureArea / (length * width);
     }
 
-    void generateWorkspaceLayout() const {
-        for (const vector<char>& row : workspaceLayout) {
-            for (char cell : row) {
-                cout << cell << ' ';
+    void generateWorkspaceLayout()  {
+        int i,j;
+        for(i=0;i<length;i++){
+            for(j=0;j<width;j++){
+                if(workspaceLayout[i][j]=='*')
+                    workspaceLayout[i][j]='.';
+                cout<<workspaceLayout[i][j]<<" ";    
             }
-            cout << '\n';
+            cout<<endl;
         }
     }
     vector<vector<char>> getLayout(){
@@ -556,12 +578,12 @@ int main() {
                                 cout << "Space Utilization: " << (spaceUtilization * 100) << "%" << endl;*/
                                 
                                 workspace[id].alternatepos(furniture[id]);
-                                
-                                workspace[id].generate();
+                                workspace[id].generateWorkspaceLayout();
+                            //    workspace[id].generate();
                                 cout << "Are you fine with the furniture placement?? (0 - No 1 - Yes)";
                                 cin >> ch;
                             } 
-                            workspace[id].finalize(furniture[id]);
+                       //     workspace[id].finalize(furniture[id]);
                             break;
                         }
     
