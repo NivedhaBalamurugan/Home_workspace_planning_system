@@ -1,7 +1,26 @@
+/*#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int c1=177,c2=219;
+    int i,j;
+    vector<vector<char>>v={{'.','.','.','.','.','.'}, {'.','.','.','t','t','t'},{'.','.','.','t','t','t'},{'.','.','.','t','t','t'}};
+    for(i=0;i<4;i++){
+        for(j=0;j<6;j++)
+        {
+            if(v[i][j]=='.')
+            printf("%c",c2);
+            else
+            printf("%c",c1);
+        }
+        cout<<endl;
+    }
+}*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
 int id = -1;
+    int c1=177,c2=219;
 map<string, pair<string, pair<string, int>>> acct; // mail- pass- user-id
 
 bool isStrongPassword(string& password) {
@@ -106,7 +125,10 @@ public:
         // Print the layout, row by row
         for (const vector<char>& row : layout) {
             for (char cell : row) {
-                cout << cell << ' ';
+                if(cell=='.')
+                    printf("%c",c2);  //c2cout << ". ";
+                else
+                    printf("%c",c1);  //cout << workspaceLayout[i][j] << " ";
             }
             cout << '\n';
         }
@@ -621,9 +643,14 @@ public:
        
             for (j = 0; j < width; j++) {
                 if (workspaceLayout[i][j] == '*')
-                    cout << ". ";
-                else
-                    cout << workspaceLayout[i][j] << " ";
+                    printf("%c",c2);  //c2cout << ". ";
+                else{
+                    if(workspaceLayout[i][j]=='.')
+                        printf("%c",c2);  //c2cout << ". ";
+                    else
+                        printf("%c",c1);  //cout << workspaceLayout[i][j] << " ";
+                }
+                    
             }
        
             // Print trailing padding and move to the next line
@@ -756,6 +783,7 @@ int main() {
                             }
                             else
                                 workspace[id].addFurniture(furniture[id]);
+                            
                             workspace[id].generateWorkspaceLayout();
                             double spaceUtilization = workspace[id].calculateSpaceUtilization();
                             cout << "Space Utilization: " << (spaceUtilization * 100) << "%" << endl;
