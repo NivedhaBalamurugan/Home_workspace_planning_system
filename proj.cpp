@@ -1,21 +1,3 @@
-/*#include<bits/stdc++.h>
-using namespace std;
-int main(){
-    int c1=177,c2=219;
-    int i,j;
-    vector<vector<char>>v={{'.','.','.','.','.','.'}, {'.','.','.','t','t','t'},{'.','.','.','t','t','t'},{'.','.','.','t','t','t'}};
-    for(i=0;i<4;i++){
-        for(j=0;j<6;j++)
-        {
-            if(v[i][j]=='.')
-            printf("%c",c2);
-            else
-            printf("%c",c1);
-        }
-        cout<<endl;
-    }
-}*/
-
 #include<bits/stdc++.h>
 using namespace std;
 
